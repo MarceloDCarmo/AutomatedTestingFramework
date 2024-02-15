@@ -14,6 +14,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import utils.RandomDataUtils;
+
+import static utils.RandomDataUtils.generateRandomNumber;
+import static utils.RandomDataUtils.generateRandomString;
 
 public class ContactUsSteps {
 
@@ -33,14 +37,6 @@ public class ContactUsSteps {
         chromeOptions.addArguments("--no-sandbox"); // Bypass OS security model
         driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
-    }
-
-    public String generateRandomNumber(int length){
-        return RandomStringUtils.randomNumeric(length);
-    }
-
-    public String generateRandomString(int length){
-        return RandomStringUtils.randomAlphabetic(length);
     }
 
     @After
@@ -88,14 +84,17 @@ public class ContactUsSteps {
     public void iEnterASpecificFirst(String firstName) {
         driver.findElement(By.xpath("//input[@name=\"first_name\"]")).sendKeys(firstName);
     }
+
     @And("I enter a specific last {word}")
     public void iEnterASpecificLast(String lastName) {
         driver.findElement(By.xpath("//input[@name=\"last_name\"]")).sendKeys(lastName);
     }
+
     @And("I enter a specific email address {string}")
     public void iEnterASpecificEmailAddress(String emailAddress) {
         driver.findElement(By.xpath("//input[@name=\"email\"]")).sendKeys(emailAddress);
     }
+
     @And("I enter a specific comment {string}")
     public void iEnterASpecificComment(String comment) {
         driver.findElement(By.xpath("//textarea[@name=\"message\"]")).sendKeys(comment);
