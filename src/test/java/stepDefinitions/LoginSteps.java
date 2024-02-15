@@ -54,12 +54,12 @@ public class LoginSteps {
         driver.get("https://www.webdriveruniversity.com/Login-Portal/index.html");
     }
 
-    @When("I enter a valid username {word}")
+    @When("I enter the valid username {word}")
     public void iEnterAValidUsername(String username) {
         driver.findElement(By.xpath("//input[@id=\"text\"]")).sendKeys(username);
     }
 
-    @And("I enter a valid password {word}")
+    @And("I enter the valid password {}")
     public void iEnterAValidPassword(String password) {
         driver.findElement(By.xpath("//input[@id=\"password\"]")).sendKeys(password);
     }
