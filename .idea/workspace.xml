@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="545806c3-a30d-426a-9b98-348cf90ed8cd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/runners/MainRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/runners/MainRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepDefinitions/ContactUsSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepDefinitions/ContactUsSteps.java" afterDir="false" />
-    </list>
+    <list default="true" id="545806c3-a30d-426a-9b98-348cf90ed8cd" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,30 +37,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Cucumber Java.Feature: ContactUs.executor": "Run",
-    "Cucumber Java.Feature: Contact_Us.executor": "Run",
-    "Cucumber Java.Scenario: Validate Successful Submission - Specific Data.executor": "Run",
-    "Cucumber Java.Scenario: Validate Successful Submission - Unique Data (1).executor": "Run",
-    "Cucumber Java.Scenario: Validate Successful Submission - Unique Data.executor": "Run",
-    "Maven.automation-framework [clean].executor": "Run",
-    "Maven.automation-framework [compile].executor": "Run",
-    "Maven.automation-framework [install].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TestNG.MainRunner.executor": "Run",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/marcelo/Repos/Automation-Framework/automation-framework/src/main/java/drivers",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.build.tools.auto.reload": "ALL",
-    "settings.editor.selected.configurable": "settings.qodana"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Cucumber Java.Feature: ContactUs.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: Contact_Us.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Validate Successful Submission - Specific Data.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Validate Successful Submission - Unique Data (1).executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Validate Successful Submission - Unique Data.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.automation-framework [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.automation-framework [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.automation-framework [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TestNG.MainRunner.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/marcelo/Repos/Automation-Framework/automation-framework/src/main/java/drivers&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.qodana&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/drivers" />

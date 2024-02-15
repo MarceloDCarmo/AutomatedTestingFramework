@@ -6,7 +6,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.PageLoadStrategy;
@@ -55,14 +54,14 @@ public class LoginSteps {
         driver.get("https://www.webdriveruniversity.com/Login-Portal/index.html");
     }
 
-    @When("I enter a valid username")
-    public void iEnterAValidUsername() {
-        driver.findElement(By.xpath("//input[@id=\"text\"]")).sendKeys("webdriver");
+    @When("I enter a valid username {word}")
+    public void iEnterAValidUsername(String username) {
+        driver.findElement(By.xpath("//input[@id=\"text\"]")).sendKeys(username);
     }
 
-    @And("I enter a valid password")
-    public void iEnterAValidPassword() {
-        driver.findElement(By.xpath("//input[@id=\"password\"]")).sendKeys("webdriver123");
+    @And("I enter a valid password {word}")
+    public void iEnterAValidPassword(String password) {
+        driver.findElement(By.xpath("//input[@id=\"password\"]")).sendKeys(password);
     }
 
     @And("I click the login button")

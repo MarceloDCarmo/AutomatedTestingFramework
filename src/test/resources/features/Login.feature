@@ -3,8 +3,8 @@ Feature: WebDriver University - Login
 
   Scenario: Validate successful login with valid data
     Given I access the webdriver login page
-    When I enter a valid username
-    And I enter a valid password
+    When I enter a valid username webdriver
+    And I enter a valid password webdriver123
     And I click the login button
     Then I should be presented with an alert informing a successful login
 
@@ -17,7 +17,7 @@ Feature: WebDriver University - Login
 
   Scenario: Validate failed login attempt with valid username and invalid password
     Given I access the webdriver login page
-    When I enter a valid username
+    When I enter a valid username webdriver
     And I enter a invalid password
     And I click the login button
     Then I should be presented with an alert informing I have failed to login
