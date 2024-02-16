@@ -40,8 +40,6 @@ public class DriverFactory {
                 driver = new FirefoxDriver(firefoxOptions);
             }
         }
-
-        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         driver.manage().window().maximize();
 
         return driver;
