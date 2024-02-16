@@ -1,23 +1,26 @@
-@login
+@login @regression
 Feature: WebDriver University - Login
 
-  Scenario: Validate successful login with valid data
+  Background:
     Given I access the webdriver login page
-    When I enter the valid username webdriver
-    And I enter the valid password webdriver123
-    And I click the login button
-    Then I should be presented with an alert informing a successful login
 
-  Scenario: Validate failed login attempt with invalid data
-    Given I access the webdriver login page
-    When I enter a invalid username
-    And I enter a invalid password
+  Scenario Outline: Validate successful and unsuccessful login
+    When I enter the username <username>
+    And I enter the password <password>
     And I click the login button
-    Then I should be presented with an alert informing I have failed to login
+    Then I should be presented with an alert with the message "<message>"
 
-  Scenario: Validate failed login attempt with valid username and invalid password
-    Given I access the webdriver login page
-    When I enter the valid username webdriver
-    And I enter a invalid password
-    And I click the login button
-    Then I should be presented with an alert informing I have failed to login
+    @loginWithValidData
+    Examples:
+      | username      | password      | message              |
+      | webdriver     | webdriver123  | validation succeeded |
+
+    @loginWithInvalidPassword
+    Examples:
+      | username      | password      | message              |
+      | webdriver     | wrongPassword | validation failed    |
+
+    @loginWithInvalidData
+    Examples:
+      | username      | password      | message              |
+      | wrongUsername | wrongPassword | validation failed    |

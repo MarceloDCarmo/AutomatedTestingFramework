@@ -23,7 +23,7 @@ public class ContactUsSteps {
 
     private WebDriver driver;
 
-    @Before
+    @Before("@contact-us")
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/java/drivers/chromedriver");
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -39,7 +39,7 @@ public class ContactUsSteps {
         driver.manage().window().maximize();
     }
 
-    @After
+    @After("@contact-us")
     public void tearDown() {
         driver.quit();
     }

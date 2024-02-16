@@ -19,21 +19,18 @@ import org.testng.Assert;
 
 import java.time.Duration;
 
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
-import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
-
 public class LoginSteps {
 
     private WebDriver driver;
     private Wait<WebDriver> wait;
 
-    @Before
+    @Before("@login")
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/java/drivers/chromedriver");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-        chromeOptions.addArguments("--remote-allow-origins=*");
         chromeOptions.setBinary("/home/marcelo/Downloads/google-chrome/chrome");
+        chromeOptions.addArguments("--remote-allow-origins=*");
         chromeOptions.addArguments("disable-infobars"); // disabling info bars
         chromeOptions.addArguments("--disable-extensions"); // disabling extensions
         chromeOptions.addArguments("--disable-gpu"); // applicable to Windows os only
@@ -44,7 +41,7 @@ public class LoginSteps {
         wait = new WebDriverWait(driver, Duration.ofSeconds(2));
     }
 
-    @After
+    @After("@login")
     public void tearDown() {
         driver.quit();
     }
@@ -54,13 +51,13 @@ public class LoginSteps {
         driver.get("https://www.webdriveruniversity.com/Login-Portal/index.html");
     }
 
-    @When("I enter the valid username {word}")
-    public void iEnterAValidUsername(String username) {
+    @When("I enter the username {word}")
+    public void iEnterAInvalidUsername(String username) {
         driver.findElement(By.xpath("//input[@id=\"text\"]")).sendKeys(username);
     }
 
-    @And("I enter the valid password {}")
-    public void iEnterAValidPassword(String password) {
+    @And("I enter the password {}")
+    public void iEnterAInvalidPassword(String password) {
         driver.findElement(By.xpath("//input[@id=\"password\"]")).sendKeys(password);
     }
 
@@ -69,32 +66,14 @@ public class LoginSteps {
         driver.findElement(By.xpath("//button[@id=\"login-button\"]")).click();
     }
 
-    @Then("I should be presented with an alert informing a successful login")
-    public void iShouldBePresentedWithAnAlertInformingASuccessfulLogin() {
+    @Then("I should be presented with an alert with the message {string}")
+    public void iShouldBePresentedWithAnAlertInformingIHaveFailedToLogin(String message) {
+        //Another approach:
+        //Alert alert = driver.switchTo().alert();
         Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-        String message = alert.getText();
+        String alertMessage = alert.getText();
 
-        Assert.assertEquals(message, "validation succeeded");
-
-        alert.accept();
-    }
-
-    @When("I enter a invalid username")
-    public void iEnterAInvalidUsername() {
-        driver.findElement(By.xpath("//input[@id=\"text\"]")).sendKeys(randomAlphabetic(5) + randomNumeric(5));
-    }
-
-    @And("I enter a invalid password")
-    public void iEnterAInvalidPassword() {
-        driver.findElement(By.xpath("//input[@id=\"password\"]")).sendKeys(randomAlphabetic(5) + randomNumeric(5));
-    }
-
-    @Then("I should be presented with an alert informing I have failed to login")
-    public void iShouldBePresentedWithAnAlertInformingIHaveFailedToLogin() {
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-        String message = alert.getText();
-
-        Assert.assertEquals(message, "validation failed");
+        Assert.assertEquals(alertMessage, message);
 
         alert.accept();
     }
