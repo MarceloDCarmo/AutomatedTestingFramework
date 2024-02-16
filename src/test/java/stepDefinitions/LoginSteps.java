@@ -1,17 +1,13 @@
 package stepDefinitions;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import driver.DriverFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,30 +17,8 @@ import java.time.Duration;
 
 public class LoginSteps {
 
-    private WebDriver driver;
-    private Wait<WebDriver> wait;
-
-    @Before("@login")
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/java/drivers/chromedriver");
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-        chromeOptions.setBinary("/home/marcelo/Downloads/google-chrome/chrome");
-        chromeOptions.addArguments("--remote-allow-origins=*");
-        chromeOptions.addArguments("disable-infobars"); // disabling info bars
-        chromeOptions.addArguments("--disable-extensions"); // disabling extensions
-        chromeOptions.addArguments("--disable-gpu"); // applicable to Windows os only
-        chromeOptions.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-        chromeOptions.addArguments("--no-sandbox"); // Bypass OS security model
-        driver = new ChromeDriver(chromeOptions);
-        driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-    }
-
-    @After("@login")
-    public void tearDown() {
-        driver.quit();
-    }
+    private final WebDriver driver = DriverFactory.getDriver();
+    Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(2));
 
     @Given("I access the webdriver login page")
     public void iAccessTheWebdriverLoginPage() {
