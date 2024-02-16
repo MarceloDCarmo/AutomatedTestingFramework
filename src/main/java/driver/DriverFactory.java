@@ -4,45 +4,66 @@ import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.devtools.v121.io.IO;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Locale;
+import java.util.Properties;
 
 public class DriverFactory {
     private static final ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
 
-    public static WebDriver getDriver(){
-        if(webDriver.get() == null){
+    public static WebDriver getDriver() {
+        if (webDriver.get() == null) {
             webDriver.set(createWebdriver());
         }
 
-        return webDriver.get() ;
+        return webDriver.get();
     }
 
     private static WebDriver createWebdriver() {
         WebDriver driver = null;
 
-        String browserType = "chrome";
-
-        switch (browserType) {
+        switch (getBrowserType()) {
             case "chrome" -> {
                 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/java/driver/drivers/chromedriver" + (System.getProperty("os.name").contains("win") ? ".exe" : ""));
                 ChromeOptions chromeOptions = getChromeOptions();
                 driver = new ChromeDriver(chromeOptions);
             }
             case "firefox" -> {
-                System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/main/java/driver/drivers/geckodriver" + (System.getProperty("os.name").contains("win") ? ".exe" : ""));
+//              If your system need to use a specific geckodriver, you can put it in the "drivers" folder and uncomment the next line
+//              System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/main/java/driver/drivers/geckodriver" + (System.getProperty("os.name").contains("win") ? ".exe" : ""));
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 firefoxOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
                 driver = new FirefoxDriver(firefoxOptions);
             }
         }
+
         driver.manage().window().maximize();
 
         return driver;
+    }
+
+    private static String getBrowserType() {
+        String browserType = null;
+
+        try (FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/properties/config.properties")) {
+            Properties properties = new Properties();
+            properties.load(fis);
+
+            browserType = properties.getProperty("browser").toLowerCase().trim();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return browserType;
     }
 
     private static ChromeOptions getChromeOptions() {
@@ -58,7 +79,7 @@ public class DriverFactory {
         return chromeOptions;
     }
 
-    public static void cleanupDriver(){
+    public static void cleanupDriver() {
         webDriver.get().quit();
         webDriver.remove();
     }
