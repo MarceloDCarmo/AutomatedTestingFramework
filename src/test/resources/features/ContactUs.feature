@@ -15,8 +15,8 @@ Feature: WebDriver University - Contact Us Page
 
   @SpecificData
   Scenario: Validate Successful Submission - Specific Data
-    When I enter a specific first John
-    And I enter a specific last Tester
+    When I enter a specific first name John
+    And I enter a specific last name Tester
     And I enter a specific email address "johntester@mail.com"
     And I enter a specific comment "Just an automated test!"
     And I click on the submit button
