@@ -52,13 +52,15 @@ public class DriverFactory {
     }
 
     private static String getBrowserType() {
-        String browserType = null;
+        String browserType = System.getProperty("browserType");
 
         try (FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/properties/config.properties")) {
-            Properties properties = new Properties();
-            properties.load(fis);
+            if (browserType == null || browserType.isEmpty()) {
+                Properties properties = new Properties();
+                properties.load(fis);
 
-            browserType = properties.getProperty("browser").toLowerCase().trim();
+                browserType = properties.getProperty("browser").toLowerCase().trim();
+            }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
